@@ -1,0 +1,53 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/employer_service_db
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: password
+    # for connection pooling
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  jpa:
+    dataBase-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+        ddl-auto: update
+    show-sql: true
+    properties:
+        hibernate:
+          format_sql: true
+          jdbc:
+            lob:
+              non_contextual_creation: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+  logging:
+    level:
+      org:
+        springframework:
+          security: DEBUG
+resilience4j:
+  circuitbreaker:
+    instances:
+      jobServiceCB:
+        registerHealthIndicator: true
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        slidingWindowSize: 10
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics
