@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  #config:
+    #import: configserver:http://localhost:8888
+  cloud:
+    gateway:
+      routes:
+        - id: employer-auth-service
+          uri: lb://EMPLOYER-AUTH-SERVICE
+          predicates:
+            - Path=/auth/emp/**
+
+        - id: jobseeker-auth-service
+          uri: lb://JOBSEEKER-AUTH-SERVICE
+          predicates:
+            - Path=/auth/js/**
+
+        - id: employer-service
+          uri: lb://EMPLOYER-SERVICE
+          predicates:
+            - Path=/employer/**
+
+        - id: jobseeker-service
+          uri: lb://JOBSEEKER-SERVICE
+          predicates:
+            - Path=/jobseeker/**
+
+        - id: job-service
+          uri: lb://JOB-SERVICE
+          predicates:
+            - Path=/job/**
+
+        - id: message-service
+          uri: lb://MESSAGE-SERVICE
+          predicates:
+            - Path=/message/**
+
