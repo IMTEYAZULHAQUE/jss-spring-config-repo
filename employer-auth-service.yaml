@@ -1,5 +1,5 @@
-spring
-    datasource:
+spring:
+  datasource:
     url: jdbc:postgresql://localhost:5432/employer_auth_service_db
     driverClassName: org.postgresql.Driver
     username: postgres
