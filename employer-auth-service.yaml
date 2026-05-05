@@ -8,3 +8,6 @@ jwt:
   secret: MySuperStrongSecretKeyThatIsAtLeast32CharactersLong!
   issuer: employer_auth-service
   expiration: 3600000    
+
+auth:
+  base-path: /auth/emp
