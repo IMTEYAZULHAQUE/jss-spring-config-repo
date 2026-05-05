@@ -5,4 +5,4 @@ spring:
     username: postgres
     password: password
 emp:
-  base-path: /employerreg  
+  base-path: /employer 
