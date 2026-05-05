@@ -1,6 +1,3 @@
-server:
-  port: 8080
-
 spring:
   application:
     name: api-gateway
@@ -37,3 +34,11 @@ spring:
           predicates:
             - Path=/message/**
 
+jwt:
+  secret: MySuperStrongSecretKeyThatIsAtLeast32CharactersLong!
+  issuer: employer_auth-service
+  expiration: 3600000
+management:
+  endpoint:
+    gateway:
+      enabled: true
