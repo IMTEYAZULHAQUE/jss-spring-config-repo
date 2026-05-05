@@ -4,4 +4,5 @@ spring:
     driverClassName: org.postgresql.Driver
     username: postgres
     password: password
-    
+emp:
+  base-path: /employer  
