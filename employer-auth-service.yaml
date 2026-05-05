@@ -10,4 +10,4 @@ jwt:
   expiration: 3600000    
 
 auth:
-  base-path: /auth/emp
+  emp-base-path: /auth/emp
